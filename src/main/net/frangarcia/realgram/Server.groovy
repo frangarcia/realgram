@@ -48,3 +48,8 @@ vertx.createSockJSServer(server).bridge(prefix: '/eventbus', [[:]], [[:]])
 
 server.listen(8080)
 
+def eb = vertx.eventBus
+
+eb.registerHandler("ping-address", { message ->
+  println "Received message: ${message.body()}"
+})
